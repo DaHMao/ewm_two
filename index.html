@@ -19,19 +19,20 @@
             height: 100%;
         }
     </style>
-    <script type="text/javascript">
-        window.onload = function () {
-            setInterval("toggleSound()", 1);
-        }
+<!--    <script type="text/javascript">-->
+<!--        window.onload = function () {-->
+<!--            setInterval("toggleSound()", 1);-->
+<!--        }-->
 
-        function toggleSound() {
-            var music = document.getElementById("music");//获取ID
-            if (music.paused) { //判读是否播放
-                music.paused = false;
-                music.play(); //没有就播放
-            }
-        }
-    </script>
+<!--        function toggleSound() {-->
+<!--            var music = document.getElementById("music");//获取ID-->
+<!--            if (music.paused) { //判读是否播放-->
+<!--                music.paused = false;-->
+<!--                music.play(); //没有就播放-->
+<!--            }-->
+<!--        }-->
+<!--    </script>-->
+
 </head>
 <body>
 <canvas id="snowCanvas"></canvas>
@@ -201,5 +202,26 @@
 <audio preload autoplay loop id="music">
     <source src="xiaomeiman.mp3" type="audio/mpeg">
 </audio>
+
+<!-- 页面内容 -->
+<div id="clickArea"
+     style="width: 100%; height: 100vh; position: relative; display: flex; justify-content: center; align-items: center;">
+</div>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        var clickArea = document.getElementById('clickArea');
+        if (!clickArea) {
+            console.error('无法找到元素：clickArea');
+            return;
+        }
+        clickArea.addEventListener('click', function () {
+            var music = document.getElementById('music');
+            if (music.paused) {
+                music.play();
+            }
+        });
+    });
+</script>
 </body>
 </html>
